@@ -11,7 +11,21 @@ export class App {
         //console.log("App is running");
     }
 
-    async createScene()
+    /*
+    * Renders the interactive AR/VR scene when user clicks the "XR Format"
+    * button in the XRAuthor Interface
+    * @param canvasID is the string ID of the HTMLCanvasElement target to
+    *                 render the scene into
+    * @param authoringData is a dict of dicts that contains various information
+    *                      from other XRAuthor components, e.g., dicts of
+    *                      recordingData, editingData, etc. however, this object
+    *                      is ignored for now and an initial scene independent
+    *                      of authoringData is created for fulfiling A3 criteria
+    */
+    async createXRScene(
+        canvasID: string,
+        authoringData: {[dataType: string]: {[key: string]: any}}
+    )
     {
         const scene = new Scene(this.engine);
         scene.createDefaultCameraOrLight();
@@ -27,7 +41,7 @@ export class App {
         helloPlane.position.z = 5;
         const helloTexture = AdvancedDynamicTexture.CreateForMesh(helloPlane);
         const helloText = new TextBlock("hello");
-        helloText.text = "Hello XR";
+        helloText.text = canvasID;
         helloText.color = "purple";
         helloText.fontSize = 50;
         helloTexture.addControl(helloText); //Pass the helloText into the texture, what the texture will show
@@ -40,7 +54,7 @@ export class App {
             {
                 uiOptions: {
                     //immersive-ar or immersive-vr
-                    sessionMode: 'immersive-ar'
+                    sessionMode: 'immersive-vr'
                 }
             }
         );

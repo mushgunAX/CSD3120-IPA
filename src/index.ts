@@ -14,7 +14,7 @@ const engine = new Engine(canvas, true);
 
 const app = new App(engine, canvas);
 
-const scenePromise = app.createScene();
+const scenePromise = app.createXRScene(canvas.id, );
 
 //This below cannot be use as scene is async
 //const scene = app.createScene();
