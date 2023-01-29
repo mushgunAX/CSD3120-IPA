@@ -1,3 +1,9 @@
+/*
+* @filename index.ts
+* @author   Ryan Wang, 2000571
+* @brief    Holds the implementation of the entry point
+*/
+
 import {Engine} from "babylonjs";
 import {App} from "./app";
 
@@ -14,7 +20,7 @@ const engine = new Engine(canvas, true);
 
 const app = new App(engine, canvas);
 
-const scenePromise = app.createXRScene(canvas.id, );
+const scenePromise = app.createXRScene(canvas.id);
 
 //This below cannot be use as scene is async
 //const scene = app.createScene();
@@ -23,6 +29,7 @@ const scenePromise = app.createXRScene(canvas.id, );
     scene.render();
 })*/
 
+//The rendering loop for the scene is handled in here
 scenePromise.then(scene => {
     engine.runRenderLoop(() => {
         scene.render();

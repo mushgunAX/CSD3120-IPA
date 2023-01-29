@@ -1,10 +1,25 @@
+/*
+* @filename app.ts
+* @author   Ryan Wang, 2000571
+* @brief    Holds the implementation of the App class
+*/
+
 import {Engine, MeshBuilder, Scene} from "babylonjs";
 import {AdvancedDynamicTexture, TextBlock} from 'babylonjs-gui';
 
+/*
+* The App class, handling the displaying of the XR scene on the website
+*/
 export class App {
     private engine: Engine;
     private canvas: HTMLCanvasElement;
 
+    /*
+    * Constructs an instance of the App class
+    * @param engine is the Babylon.js engine that handles low-level tasks
+    * @param canvas is the HTML canvas element the app should run and be
+    *               displayed on
+    */
     constructor(engine: Engine, canvas: HTMLCanvasElement) {
         this.engine = engine,
         this.canvas = canvas;
@@ -24,7 +39,7 @@ export class App {
     */
     async createXRScene(
         canvasID: string,
-        authoringData: {[dataType: string]: {[key: string]: any}}
+        authoringData: {[dataType: string]: {[key: string]: any}} = {}
     )
     {
         const scene = new Scene(this.engine);
