@@ -24,16 +24,16 @@ _Wang Nian Jing, Ryan - 2000571_
 
 ## Setup for dependecies and starting up
 Make sure to do these commands **in order** on your Linux CLI in the root directory of this project folder:
-    * Install npm by `npm install -g npm`
-    * Install babylonjs by `npm install --save babylonjs`
-    * Install webpack dependecies by `npm install --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin`
-    * Install typescript dependecies by `npm install --save-dev typescript ts-loader`
-    * Install babylonjs GUI by `npm install --save babylonjs-gui`
-    * Inside the package.json file, add this code snippet into the "scripts` section:
-    `"scripts": { "test": "echo \"Error: no test specified\" && exit 1", "build": "webpack", "serve": "webpack serve", "start": "webpack serve --open"},`
-    * Type `npm run build` to build the server
-    * Type `npm run serve` to start running the server that hosts the web app, which could be accessed through the URL `localhost:3000` (Make sure that nothing else on your computer is using the port 3000)
-    * Press Ctrl+C twice to stop the server once you are done using it.
+     * Install npm by `npm install -g npm`
+     * Install babylonjs by `npm install --save babylonjs`
+     * Install webpack dependecies by `npm install --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin`
+     * Install typescript dependecies by `npm install --save-dev typescript ts-loader`
+     * Install babylonjs GUI by `npm install --save babylonjs-gui`
+     * Inside the package.json file, add this code snippet into the "scripts` section:
+       `"scripts": { "test": "echo \"Error: no test specified\" && exit 1", "build": "webpack", "serve": "webpack serve", "start": "webpack serve --open"},`
+     * Type `npm run build` to build the server
+     * Type `npm run serve` to start running the server that hosts the web app, which could be accessed through the URL `localhost:3000` (Make sure that nothing else on your computer is using the port 3000)
+     * Press Ctrl+C twice to stop the server once you are done using it.
 
 ## Video link
 `assets/Reaction to form water/videos/0.webm`
