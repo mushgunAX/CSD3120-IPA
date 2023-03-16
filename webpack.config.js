@@ -18,8 +18,9 @@ module.exports = {
     mode: "development", //Or 'production' when going to production
     devtool: 'inline-source-map', //Good for development purposes, recommended to remove when on production
     devServer: {
-        static: false, //Assets will be bundled by the webpack
-        port: 3000, //Use this port
+        static: true, //Assets will not be bundled by the webpack
+        port: 3000, //Use this port,
+        server: 'http'
     },
     plugins: [
         new HtmlWebpackPlugin({

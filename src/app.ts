@@ -4,7 +4,7 @@
 * @brief    Holds the implementation of the App class
 */
 
-import {Engine, MeshBuilder, Scene} from "babylonjs";
+import {ArcRotateCamera, Color3, CubeTexture, Engine, HemisphericLight, MeshBuilder, PointLight, Scene, StandardMaterial, Texture, UniversalCamera, Vector3} from "babylonjs";
 import {AdvancedDynamicTexture, TextBlock} from 'babylonjs-gui';
 
 /*
@@ -43,7 +43,10 @@ export class App {
     )
     {
         const scene = new Scene(this.engine);
-        scene.createDefaultCameraOrLight();
+        //scene.createDefaultCameraOrLight();
+        this.createCamera(scene);
+        this.createLights(scene);
+        this.addInspectorKeyboardShortcut(scene);
 
         //Sphere
         const sphere = MeshBuilder.CreateSphere('sphere', {diameter: 1.3}, scene);
@@ -60,6 +63,8 @@ export class App {
         helloText.color = "purple";
         helloText.fontSize = 50;
         helloTexture.addControl(helloText); //Pass the helloText into the texture, what the texture will show
+
+        this.createSkybox(scene);
 
         //XR
         //Async means that this function does not have to finish before calling
@@ -80,5 +85,63 @@ export class App {
 
         //End with this
         return scene;
+    }
+
+    //COMMENT
+    //Create a specialised camera for the scene
+    createCamera(scene: Scene)
+    {
+        //const camera = new ArcRotateCamera("arcCamera", -Math.PI / 5, Math.PI / 2, 5, Vector3.Zero(), scene);
+        const camera = new UniversalCamera("uniCamera", new Vector3(0, 0, -5), scene);
+        camera.attachControl(this.canvas, true);
+    }
+
+    //COMMENT
+    //Create a light
+    createLights(scene: Scene)
+    {
+        //Hemispheric Light is ambient light
+        /*const hemiLight = new HemisphericLight("hemiLight", Vector3.Up(), scene);
+        hemiLight.intensity = 1.0;
+        hemiLight.diffuse = new Color3(1.0, 0.8, 0.8)*/
+
+        const pointLight = new PointLight("pointLight", new Vector3(), scene);
+        pointLight.intensity = 0.5;
+        pointLight.diffuse = new Color3(1.0, 0.9, 0.5);
+    }
+
+    //COMMENT
+    //Create a skybox for the scene
+    createSkybox(scene: Scene) 
+    {
+        const skybox = MeshBuilder.CreateBox('skybox', {size: 1000}, scene);
+        const skyboxMaterial = new StandardMaterial('skybox-mat');
+
+        skyboxMaterial.backFaceCulling = false;
+        skyboxMaterial.reflectionTexture = new CubeTexture('assets/textures/skybox', scene);
+        skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
+        skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
+        skyboxMaterial.specularColor = new Color3(0, 0, 0);
+        skybox.material = skyboxMaterial;
+    }
+
+    //COMMENT
+    addInspectorKeyboardShortcut(scene: Scene)
+    {
+        window.addEventListener("keydown", e => {
+            if (e.ctrlKey && e.altKey && e.key === "i")
+            {
+                //=== operator is strict equality, which also checks for type
+                //CTRL + ALT + I
+                if (scene.debugLayer.isVisible())
+                {
+                    scene.debugLayer.hide();
+                }
+                else
+                {
+                    scene.debugLayer.show();
+                }
+            }
+        })
     }
 }
