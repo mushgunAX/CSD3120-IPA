@@ -35,6 +35,10 @@ Install typescript dependecies by `npm install --save-dev typescript ts-loader`
 
 Install babylonjs GUI by `npm install --save babylonjs-gui`
 
+Install babylonjs materials by `npm install --save babylonjs-materials`
+
+Install babylonjs loaders so that GLB/GLTF models, which this application uses, can be loaded `npm install --save babylonjs-loaders`
+
 Inside the package.json file, add this code snippet into the "scripts` section:
        `"scripts": { "test": "echo \"Error: no test specified\" && exit 1", "build": "webpack", "serve": "webpack serve", "start": "webpack serve --open"},`
 

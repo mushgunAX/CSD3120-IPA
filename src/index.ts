@@ -35,3 +35,9 @@ scenePromise.then(scene => {
         scene.render();
     })
 });
+
+//Engine to resize along with the window, so as to not produce a stretched out
+//image when resizing
+window.addEventListener('resize', () => {
+    engine.resize();
+})
