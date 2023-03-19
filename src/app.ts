@@ -4,9 +4,13 @@
 * @brief    Holds the implementation of the App class
 */
 
+//Babylon JS libraries
 import * as babylonjs from "babylonjs"
 import * as babylonjsgui from 'babylonjs-gui'
 import 'babylonjs-loaders'
+
+//Component classes
+import {TextPlane} from "./components/meshes"
 
 /*
 * The App class, handling the displaying of the XR scene on the website
@@ -55,18 +59,24 @@ export class App {
         sphere.position.z = 5
 
         //Model
-        this.loadModel(scene)
+        //this.loadModel(scene)
         
         //Sound
-        this.addSounds(scene)
+        //this.addSounds(scene)
 
         //Particles
-        this.createParticles(scene)
+        //this.createParticles(scene)
 
         //Hello text
-        this.createText(scene)
+        const helloPlane = new TextPlane("hello plane", 2.5, 1, 0, 0, 0, "HelloXR", "white", "black", 50, scene)
+        helloPlane.text.onPointerUpObservable.add(eventData => {
+            alert("Hello Text up at:\nx: " + eventData.x + "\ny: " + eventData.y)
+        })
+        helloPlane.text.onPointerDownObservable.add(eventData => {
+            alert("Hello Text down")
+        })
 
-        this.createSkybox(scene)
+        //this.createSkybox(scene)
 
         //XR
         //Async means that this function does not have to finish before calling
@@ -224,29 +234,5 @@ export class App {
         const music = new babylonjs.Sound("music", "assets/sounds/test.mp3", scene, null, {loop: true, autoplay: true})
         //const sound = new babylonjs.Sound("sound", "assets/sounds/button.mp3", scene, null)
         //sound.play()
-    }
-
-    createText(scene: babylonjs.Scene)
-    {
-        //Width and height of the plane itself
-        const helloPlane = babylonjs.MeshBuilder.CreatePlane('hello plane', {width: 4, height: 3})
-        helloPlane.position.y = 0
-        helloPlane.position.z = 5
-        //Width and height of the texture, default to 1024 x 1024
-        const helloTexture = babylonjsgui.AdvancedDynamicTexture.CreateForMesh(helloPlane, 1024, 1024)
-        helloTexture.background = "white"
-
-        const helloText = new babylonjsgui.TextBlock("hello")
-        helloText.text = "GOOD DAY"
-        helloText.color = "purple"
-        helloText.fontSize = 500
-        helloTexture.addControl(helloText) //Pass the helloText into the texture, what the texture will show
-
-        helloText.onPointerUpObservable.add(eventData => {
-            alert("Hello Text up at:\nx: " + eventData.x + "\ny: " + eventData.y)
-        })
-        helloText.onPointerDownObservable.add(eventData => {
-            alert("Hello Text down")
-        })
     }
 }
