@@ -1,5 +1,6 @@
 const path = require("path"); //require looks inside node_modules
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //Import the plugin, look inside node_modules
+const CopyPlugin = require('copy-webpack-plugin') 
 
 module.exports = {
     entry: './src/index.ts', //Entry point
@@ -25,6 +26,11 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src/index.html'),
+        }),
+        new CopyPlugin({
+            patterns: [
+                {from: path.resolve(__dirname, 'public')}
+            ]
         })
     ]
 };
