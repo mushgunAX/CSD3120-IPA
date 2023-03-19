@@ -72,3 +72,4 @@ Press **Ctrl + C** twice to stop the server once you are done using it.
 `assets/Reaction to form water/videos/0.webm`
 
 ## Application link (IPA B)
+https://mushgunax.github.io/CSD3120-IPA/
