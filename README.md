@@ -73,3 +73,12 @@ Press **Ctrl + C** twice to stop the server once you are done using it.
 
 ## Application link (IPA B)
 https://mushgunax.github.io/CSD3120-IPA/
+
+## Using the application (IPA B)
+A **VR-Capable** device is meant to be used for this application, preferably an **Oculus Quest 2**
+
+Use the **left thumbstick** to move about without teleporting
+
+Point the **right controller** and **press its button** to teleport
+
+**Grab** atoms and molecules, you can use **both hands** to scale them or attach white hydrogen atoms with red oxygen atoms to form water molecules
