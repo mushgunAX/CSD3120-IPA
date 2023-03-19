@@ -28,9 +28,6 @@ _Wang Nian Jing, Ryan - 2000571_
 `webpack.config.js` is the configuration file for the webpack.
 
 **IPA B**
-
-The contents for this segment of the IPA are in a folder named `unity`, within that folder contains:
-
 `Build` folder contains binary data for the web XR application.
 
 `StreamingAssets` folder contains a JSON of configurations for the application.
@@ -73,3 +70,5 @@ Press **Ctrl + C** twice to stop the server once you are done using it.
 
 ## Video link (IPA A)
 `assets/Reaction to form water/videos/0.webm`
+
+## Application link (IPA B)
